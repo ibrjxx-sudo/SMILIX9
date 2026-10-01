@@ -6,16 +6,18 @@ const crypto = require('crypto');
 const ROOT = __dirname;
 const DATA_DIR = path.join(ROOT, 'data');
 const CONTENT_FILE = path.join(DATA_DIR, 'site-content.json');
-const ENV_FILE = path.join(ROOT, '1.env');
+const ENV_FILES = [path.join(ROOT, '.env'), path.join(ROOT, '1.env')];
 
 function readEnvValue(name) {
-  try {
-    const line = fs.readFileSync(ENV_FILE, 'utf8').split(/\r?\n/).find(entry => entry.trim().startsWith(`${name}=`));
-    if (!line) return '';
-    return line.trim().slice(name.length + 1).trim().replace(/^(?:"([\s\S]*)"|'([\s\S]*)')$/, '$1$2');
-  } catch (error) {
-    return '';
+  for (const file of ENV_FILES) {
+    try {
+      const line = fs.readFileSync(file, 'utf8').split(/\r?\n/).find(entry => entry.trim().startsWith(`${name}=`));
+      if (line) return line.trim().slice(name.length + 1).trim().replace(/^(?:"([\s\S]*)"|'([\s\S]*)')$/, '$1$2');
+    } catch (error) {
+      continue;
+    }
   }
+  return '';
 }
 
 const NODE_ENV = process.env.NODE_ENV || readEnvValue('NODE_ENV') || 'development';

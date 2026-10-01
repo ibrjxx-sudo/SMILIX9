@@ -395,23 +395,6 @@
 
   async function loadSiteContent() {
     try {
-      const localContent = localStorage.getItem(STORAGE_KEYS.SITE_CONTENT);
-      if (localContent) {
-        const content = JSON.parse(localContent);
-        if (!localStorage.getItem(STORAGE_KEYS.GALLERY_CLEARED)) {
-          if (content.gallery && Array.isArray(content.gallery.items)) content.gallery.items = [];
-          localStorage.setItem(STORAGE_KEYS.SITE_CONTENT, JSON.stringify(content));
-          localStorage.setItem(STORAGE_KEYS.GALLERY_CLEARED, 'true');
-        }
-        renderSiteContent(content);
-        liveContentApiAvailable = false;
-        return;
-      }
-    } catch (error) {
-      // Continue with the network and bundled content fallbacks.
-    }
-
-    try {
       const apiUrl = new URL('api/content', document.baseURI);
       const response = await fetch(apiUrl, { cache: 'no-store' });
       if (response.ok && response.headers.get('content-type')?.includes('application/json')) {
@@ -421,6 +404,22 @@
       }
     } catch (error) {
       liveContentApiAvailable = false;
+    }
+
+    try {
+      const localContent = localStorage.getItem(STORAGE_KEYS.SITE_CONTENT);
+      if (localContent) {
+        const content = JSON.parse(localContent);
+        if (!localStorage.getItem(STORAGE_KEYS.GALLERY_CLEARED)) {
+          if (content.gallery && Array.isArray(content.gallery.items)) content.gallery.items = [];
+          localStorage.setItem(STORAGE_KEYS.SITE_CONTENT, JSON.stringify(content));
+          localStorage.setItem(STORAGE_KEYS.GALLERY_CLEARED, 'true');
+        }
+        renderSiteContent(content);
+        return;
+      }
+    } catch (error) {
+      // Continue with the bundled content fallback.
     }
 
     try {

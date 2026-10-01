@@ -45,12 +45,12 @@
     <div class="workspace">
       <header class="topbar">
         <div><span class="topbar-label">SMILIX / الإدارة</span><h1 id="pageTitle">نظرة عامة</h1></div>
-        <div class="topbar-actions"><span class="save-status" id="saveStatus">محفوظ محلياً</span><button class="quiet-button" id="logoutButton" type="button">تسجيل الخروج</button></div>
+        <div class="topbar-actions"><span class="save-status" id="saveStatus">جارٍ الاتصال بالخادم</span><button class="quiet-button" id="logoutButton" type="button">تسجيل الخروج</button></div>
       </header>
 
       <form id="contentForm">
         <section class="panel active" id="panel-overview" data-title="نظرة عامة">
-          <div class="welcome-row"><div><p class="kicker">استوديو SMILIX</p><h2>موقعك، تحت يدك.</h2><p class="muted">تُحفظ التعديلات في هذا المتصفح وتظهر فيه فقط.</p></div><a class="primary-button link-button" href="./" target="_blank" rel="noopener">فتح الموقع <span aria-hidden="true">↗</span></a></div>
+          <div class="welcome-row"><div><p class="kicker">استوديو SMILIX</p><h2>موقعك، تحت يدك.</h2><p class="muted" id="adminSaveNote">تُحفظ التعديلات على الخادم وتظهر لزوار الموقع.</p></div><a class="primary-button link-button" href="./" target="_blank" rel="noopener">فتح الموقع <span aria-hidden="true">↗</span></a></div>
           <div class="overview-grid">
             <article class="overview-stat"><span class="stat-icon green">✳</span><span class="overview-label">الخدمات الحالية</span><strong id="serviceCount">0</strong><small>تظهر في معاينة الموقع ونموذج الحجز</small></article>
             <article class="overview-stat"><span class="stat-icon blue">▧</span><span class="overview-label">صور المعرض</span><strong id="galleryCount">0</strong><small>تظهر في معاينة هذا المتصفح</small></article>
@@ -183,7 +183,7 @@
           </div></section>
         </section>
 
-        <div class="publish-bar"><span id="publishMessage" role="status">التغييرات المحفوظة تظهر في هذا المتصفح فقط.</span><button class="primary-button" id="publishButton" type="submit">حفظ التغييرات محلياً <span aria-hidden="true">↗</span></button></div>
+        <div class="publish-bar"><span id="publishMessage" role="status">التغييرات تُحفظ على الخادم وتظهر على الموقع.</span><button class="primary-button" id="publishButton" type="submit">حفظ التغييرات <span aria-hidden="true">↗</span></button></div>
       </form>
     </div>
   </div>

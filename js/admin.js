@@ -10,7 +10,7 @@
   const serviceList = $('#serviceList');
   const galleryList = $('#galleryList');
   const publishButton = $('#publishButton');
-  const LOCAL_MODE = true;
+  const LOCAL_MODE = new URLSearchParams(window.location.search).get('local') === '1';
   const LOCAL_CONTENT_KEY = 'smilix-admin-content';
   const GALLERY_CLEARED_KEY = 'smilix-gallery-cleared-v1';
   const ANALYTICS_KEY = 'smilix_site_analytics';
@@ -238,8 +238,13 @@
     $('#galleryCount').textContent = content.gallery.items.length;
     $('#primaryColorPicker').value = content.primaryColor || '#0ea5e9';
     updateBrandPreviews();
-    $('#saveStatus').textContent = 'محفوظ محلياً';
-    $('#publishMessage').textContent = 'التغييرات تُحفظ في هذا المتصفح وتظهر فيه فقط.';
+    $('#saveStatus').textContent = LOCAL_MODE ? 'محفوظ محلياً' : 'متصل بالخادم';
+    $('#adminSaveNote').textContent = LOCAL_MODE
+      ? 'تُحفظ التعديلات في هذا المتصفح وتظهر فيه فقط.'
+      : 'تُحفظ التعديلات على الخادم وتظهر لزوار الموقع.';
+    $('#publishMessage').textContent = LOCAL_MODE
+      ? 'التغييرات تُحفظ في هذا المتصفح وتظهر فيه فقط.'
+      : 'التغييرات تُحفظ على الخادم وتظهر على الموقع.';
     renderAnalytics();
   }
 
@@ -367,9 +372,11 @@
       }
       savedContent = JSON.stringify(content);
       renderEditor();
-      $('#saveStatus').textContent = 'تم الحفظ محلياً';
-      $('#publishMessage').textContent = 'حُفظت التغييرات، والموقع المفتوح في هذا المتصفح يتحدث تلقائياً.';
-      toast('تم حفظ التغييرات محلياً.');
+      $('#saveStatus').textContent = LOCAL_MODE ? 'تم الحفظ محلياً' : 'تم الحفظ على الخادم';
+      $('#publishMessage').textContent = LOCAL_MODE
+        ? 'حُفظت التغييرات، والموقع المفتوح في هذا المتصفح يتحدث تلقائياً.'
+        : 'حُفظت التغييرات على الخادم، وستظهر عند تحديث الموقع.';
+      toast(LOCAL_MODE ? 'تم حفظ التغييرات محلياً.' : 'تم حفظ التغييرات على الخادم.');
     } catch (error) {
       $('#publishMessage').textContent = error.message;
       if (error.message.includes('سجّل الدخول')) showLogin(error.message);
