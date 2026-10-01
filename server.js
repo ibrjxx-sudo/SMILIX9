@@ -24,7 +24,7 @@ const NODE_ENV = process.env.NODE_ENV || readEnvValue('NODE_ENV') || 'developmen
 process.env.NODE_ENV = NODE_ENV;
 const PORT = Number(process.env.PORT || readEnvValue('PORT') || 8080);
 const HOST = process.env.HOST || readEnvValue('HOST') || (NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1');
-const ADMIN_PASSWORD = process.env.SMILIX_ADMIN_PASSWORD || readEnvValue('SMILIX_ADMIN_PASSWORD') || '1199';
+const ADMIN_PASSWORD = process.env.SMILIX_ADMIN_PASSWORD || readEnvValue('SMILIX_ADMIN_PASSWORD') || '119900';
 const sessions = new Set();
 const eventClients = new Set();
 
