@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b36">
+  <title>إدارة موقع SMILIX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <main class="login-screen" id="loginScreen" hidden>
+    <form class="login-box" id="loginForm">
+      <a class="login-brand" href="./" aria-label="SMILIX"><span class="brand-mark">S</span><span>SMILIX <small>STUDIO</small></span></a>
+      <p class="kicker">مساحة الإدارة</p>
+      <h1>مرحباً بعودتك</h1>
+      <p class="login-copy">سجّل الدخول لإدارة محتوى الموقع.</p>
+      <label class="field-label" for="adminPassword">كلمة المرور</label>
+      <input class="text-input" id="adminPassword" type="password" autocomplete="current-password" required autofocus>
+      <p class="form-message" id="loginMessage" role="alert"></p>
+      <button class="primary-button login-submit" type="submit">دخول <span aria-hidden="true">←</span></button>
+      <a class="back-link" href="./">العودة إلى الموقع <span aria-hidden="true">↗</span></a>
+    </form>
+  </main>
+
+  <div class="admin-shell" id="adminShell" hidden>
+    <aside class="sidebar">
+      <a class="sidebar-brand" href="./" aria-label="العودة إلى الموقع"><span class="brand-mark">S</span><span>SMILIX<small>CONTENT STUDIO</small></span></a>
+      <div class="workspace-label">مساحة العمل</div>
+      <nav class="side-nav" aria-label="أقسام لوحة التحكم">
+        <button class="nav-item active" type="button" data-panel="overview"><span class="nav-icon">◫</span>نظرة عامة</button>
+        <button class="nav-item" type="button" data-panel="site"><span class="nav-icon">⌘</span>هوية الموقع</button>
+        <button class="nav-item" type="button" data-panel="pages"><span class="nav-icon">¶</span>نصوص الصفحة</button>
+        <button class="nav-item" type="button" data-panel="services"><span class="nav-icon">✳</span>الخدمات</button>
+        <button class="nav-item" type="button" data-panel="gallery"><span class="nav-icon">▧</span>معرض الصور</button>
+        <button class="nav-item" type="button" data-panel="contact"><span class="nav-icon">↗</span>التواصل والتذييل</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="./" target="_blank" rel="noopener">عرض الموقع <span aria-hidden="true">↗</span></a>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div><span class="topbar-label">SMILIX / الإدارة</span><h1 id="pageTitle">نظرة عامة</h1></div>
+        <div class="topbar-actions"><span class="save-status" id="saveStatus">محفوظ محلياً</span><button class="quiet-button" id="logoutButton" type="button">تسجيل الخروج</button></div>
+      </header>
+
+      <form id="contentForm">
+        <section class="panel active" id="panel-overview" data-title="نظرة عامة">
+          <div class="welcome-row"><div><p class="kicker">استوديو SMILIX</p><h2>موقعك، تحت يدك.</h2><p class="muted">تُحفظ التعديلات في هذا المتصفح وتظهر فيه فقط.</p></div><a class="primary-button link-button" href="./" target="_blank" rel="noopener">فتح الموقع <span aria-hidden="true">↗</span></a></div>
+          <div class="overview-grid">
+            <article class="overview-stat"><span class="stat-icon green">✳</span><span class="overview-label">الخدمات الحالية</span><strong id="serviceCount">0</strong><small>تظهر في معاينة الموقع ونموذج الحجز</small></article>
+            <article class="overview-stat"><span class="stat-icon blue">▧</span><span class="overview-label">صور المعرض</span><strong id="galleryCount">0</strong><small>تظهر في معاينة هذا المتصفح</small></article>
+            <article class="overview-stat"><span class="stat-icon orange">↗</span><span class="overview-label">حالة الحفظ</span><strong class="published-label">محلياً</strong><small>التعديلات تخص هذا المتصفح</small></article>
+          </div>
+          <section class="analytics-section" aria-labelledby="analyticsTitle">
+            <div class="section-heading"><div><h3 id="analyticsTitle">تحليلات الموقع</h3><p>إحصاءات محلية لهذا المتصفح فقط، ولا تشمل زوار الأجهزة الأخرى.</p></div></div>
+            <div class="overview-grid analytics-grid">
+              <article class="overview-stat"><span class="stat-icon green">↗</span><span class="overview-label">مرات فتح الموقع</span><strong id="analyticsTotalVisits">0</strong><small>إجمالي فتحات الصفحة على هذا المتصفح</small></article>
+              <article class="overview-stat"><span class="stat-icon blue">◷</span><span class="overview-label">آخر 7 أيام</span><strong id="analyticsWeeklyVisits">0</strong><small>مرات فتح الموقع خلال الأسبوع</small></article>
+              <article class="overview-stat"><span class="stat-icon orange">✓</span><span class="overview-label">نماذج الحجز المجهزة</span><strong id="analyticsBookingCount">0</strong><small>طلبات أُعدت عبر واتساب على هذا المتصفح</small></article>
+            </div>
+          </section>
+          <section class="quick-panel"><div><span class="kicker">إدارة المحتوى</span><h3>ابدأ من القسم الذي تريد تحديثه</h3></div><div class="quick-actions"><button type="button" class="quick-link" data-go="site">تحديث الهوية <span>←</span></button><button type="button" class="quick-link" data-go="services">إدارة الخدمات <span>←</span></button><button type="button" class="quick-link" data-go="gallery">تعديل المعرض <span>←</span></button></div></section>
+        </section>
+
+        <section class="panel" id="panel-site" data-title="هوية الموقع">
+          <div class="panel-intro"><p class="kicker">المظهر والمحتوى</p><h2>هوية الموقع</h2><p class="muted">عدّل الواجهة الرئيسية والألوان ومعلومات الحجز.</p></div>
+          <section class="editor-section"><div class="section-heading"><div><h3>الهوية والحجز</h3><p>اسم العلامة ورقم واتساب المستخدم في أزرار الحجز.</p></div></div><div class="field-grid">
+            <label class="field"><span>اسم العلامة</span><input class="text-input" data-field="brand" maxlength="60"></label>
+            <label class="field"><span>رقم واتساب الدولي</span><input class="text-input" data-field="whatsapp" inputmode="tel" placeholder="9627…"></label>
+            <label class="field"><span>اللون الرئيسي</span><div class="color-field"><input type="color" id="primaryColorPicker" aria-label="اختيار اللون الرئيسي"><input class="text-input" data-field="primaryColor" id="primaryColorText" maxlength="7"></div></label>
+          </div></section>
+          <section class="editor-section"><div class="section-heading"><div><h3>الشعار وأيقونة المتصفح</h3><p>ارفع ملفاتك من الجهاز. الصيغ المدعومة للشعار: PNG وJPG وWebP، وللأيقونة: ICO أو PNG.</p></div></div><div class="field-grid">
+            <label class="field"><span>رابط الشعار</span><input class="text-input" data-field="logo" dir="ltr" placeholder="ارفع ملفاً أو أضف رابطاً"></label>
+            <label class="field upload-field"><span>اختيار ملف الشعار</span><input class="text-input file-input" data-upload-field="logo" type="file" accept="image/png,image/jpeg,image/webp"></label>
+            <label class="field"><span>رابط أيقونة المتصفح</span><input class="text-input" data-field="favicon" dir="ltr" placeholder="ارفع ملفاً أو أضف رابطاً"></label>
+            <label class="field upload-field"><span>اختيار ملف ICO أو PNG</span><input class="text-input file-input" data-upload-field="favicon" type="file" accept="image/x-icon,image/png,.ico"></label>
+            <div class="asset-preview" id="logoPreviewWrap" hidden><img id="logoPreview" alt="معاينة الشعار"></div>
+            <div class="asset-preview icon-preview" id="faviconPreviewWrap" hidden><img id="faviconPreview" alt="معاينة أيقونة الموقع"></div>
+          </div></section>
+          <section class="editor-section"><div class="section-heading"><div><h3>روابط التنقل</h3><p>تتغير التسميات في القائمة العلوية وقائمة الهاتف.</p></div></div><div class="field-grid">
+            <label class="field"><span>الرئيسية</span><input class="text-input" data-field="navigation.home"></label>
+            <label class="field"><span>الخدمات</span><input class="text-input" data-field="navigation.services"></label>
+            <label class="field"><span>المعرض</span><input class="text-input" data-field="navigation.gallery"></label>
+            <label class="field"><span>الحجز</span><input class="text-input" data-field="navigation.booking"></label>
+            <label class="field"><span>التواصل</span><input class="text-input" data-field="navigation.contact"></label>
+            <label class="field"><span>زر الحجز في الشريط</span><input class="text-input" data-field="navigation.cta"></label>
+          </div></section>
+          <section class="editor-section"><div class="section-heading"><div><h3>واجهة البداية</h3><p>النصوص والصورة التي تظهر أعلى الصفحة.</p></div></div><div class="field-grid">
+            <label class="field"><span>الشارة التعريفية</span><input class="text-input" data-field="hero.eyebrow" maxlength="120"></label>
+            <label class="field"><span>العنوان، السطر الأول</span><input class="text-input" data-field="hero.titleLead" maxlength="100"></label>
+            <label class="field"><span>العنوان المميز</span><input class="text-input" data-field="hero.titleAccent" maxlength="100"></label>
+            <label class="field field-wide"><span>النص التعريفي</span><textarea class="text-input" data-field="hero.subtitle" rows="3" maxlength="1000"></textarea></label>
+            <label class="field"><span>زر الحجز الرئيسي</span><input class="text-input" data-field="hero.ctaPrimary"></label>
+            <label class="field"><span>زر التواصل</span><input class="text-input" data-field="hero.ctaSecondary"></label>
+            <label class="field field-wide"><span>رابط صورة الواجهة</span><input class="text-input" data-field="hero.image" type="text" dir="ltr" placeholder="https:// أو /assets/..."></label>
+            <label class="field upload-field field-wide"><span>رفع صورة الواجهة من الجهاز</span><input class="text-input file-input" data-upload-field="hero.image" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif"></label>
+          </div></section>
+          <section class="editor-section"><div class="section-heading"><div><h3>الأرقام البارزة</h3><p>ثلاثة مؤشرات تظهر بجانب العنوان الرئيسي.</p></div></div><div class="field-grid stats-editor">
+            <label class="field"><span>القيمة الأولى</span><input class="text-input" data-field="hero.stats.0.value" maxlength="40"></label><label class="field"><span>وصف القيمة</span><input class="text-input" data-field="hero.stats.0.label" maxlength="80"></label>
+            <label class="field"><span>القيمة الثانية</span><input class="text-input" data-field="hero.stats.1.value" maxlength="40"></label><label class="field"><span>وصف القيمة</span><input class="text-input" data-field="hero.stats.1.label" maxlength="80"></label>
+            <label class="field"><span>القيمة الثالثة</span><input class="text-input" data-field="hero.stats.2.value" maxlength="40"></label><label class="field"><span>وصف القيمة</span><input class="text-input" data-field="hero.stats.2.label" maxlength="80"></label>
+          </div></section>
+          <section class="editor-section"><div class="section-heading"><div><h3>بطاقات الواجهة</h3><p>النصوص الثلاثة العائمة بجانب صورة الواجهة.</p></div></div><div class="field-grid">
+            <label class="field"><span>البطاقة الأولى</span><input class="text-input" data-field="hero.cards.0.title"></label><label class="field"><span>وصف البطاقة الأولى</span><input class="text-input" data-field="hero.cards.0.description"></label>
+            <label class="field"><span>البطاقة الثانية</span><input class="text-input" data-field="hero.cards.1.title"></label><label class="field"><span>وصف البطاقة الثانية</span><input class="text-input" data-field="hero.cards.1.description"></label>
+            <label class="field"><span>البطاقة الثالثة</span><input class="text-input" data-field="hero.cards.2.title"></label><label class="field"><span>وصف البطاقة الثالثة</span><input class="text-input" data-field="hero.cards.2.description"></label>
+          </div></section>
+        </section>
+
+        <section class="panel" id="panel-pages" data-title="نصوص الصفحة">
+          <div class="panel-intro"><p class="kicker">محرر أقسام الموقع</p><h2>نصوص الصفحة</h2><p class="muted">عدّل العناوين والأوصاف والأزرار ومزايا الحجز في مكان واحد.</p></div>
+          <section class="editor-section"><div class="section-heading"><div><h3>قسم الخدمات</h3><p>العنوان والوصف أعلى بطاقات الخدمات.</p></div></div><div class="field-grid">
+            <label class="field"><span>الشارة</span><input class="text-input" data-field="sections.services.eyebrow"></label><label class="field"><span>العنوان</span><input class="text-input" data-field="sections.services.titleLead"></label>
+            <label class="field"><span>الكلمة المميزة</span><input class="text-input" data-field="sections.services.titleAccent"></label><label class="field field-wide"><span>الوصف</span><textarea class="text-input" data-field="sections.services.description" rows="2"></textarea></label>
+          </div></section>
+          <section class="editor-section"><div class="section-heading"><div><h3>قسم الحجز</h3><p>المقدمة والأزرار والنص الظاهر أسفل نموذج الحجز.</p></div></div><div class="field-grid">
+            <label class="field"><span>الشارة</span><input class="text-input" data-field="sections.booking.eyebrow"></label><label class="field"><span>العنوان</span><input class="text-input" data-field="sections.booking.titleLead"></label>
+            <label class="field"><span>الكلمة المميزة</span><input class="text-input" data-field="sections.booking.titleAccent"></label><label class="field"><span>نص زر الإرسال</span><input class="text-input" data-field="sections.booking.submitLabel"></label>
+            <label class="field field-wide"><span>الوصف</span><textarea class="text-input" data-field="sections.booking.description" rows="2"></textarea></label>
+            <label class="field field-wide"><span>ملاحظة النموذج</span><input class="text-input" data-field="sections.booking.formNote"></label>
+          </div><div class="section-heading feature-heading"><div><h3>مزايا الحجز</h3><p>عدّل النقاط الثلاث بجانب نموذج الحجز.</p></div></div><div class="field-grid">
+            <label class="field"><span>الميزة الأولى</span><input class="text-input" data-field="sections.booking.features.0.title"></label><label class="field"><span>وصفها</span><input class="text-input" data-field="sections.booking.features.0.description"></label>
+            <label class="field"><span>الميزة الثانية</span><input class="text-input" data-field="sections.booking.features.1.title"></label><label class="field"><span>وصفها</span><input class="text-input" data-field="sections.booking.features.1.description"></label>
+            <label class="field"><span>الميزة الثالثة</span><input class="text-input" data-field="sections.booking.features.2.title"></label><label class="field"><span>وصفها</span><input class="text-input" data-field="sections.booking.features.2.description"></label>
+          </div><div class="section-heading feature-heading"><div><h3>حقول نموذج الحجز</h3><p>غيّر التسميات والنصوص الإرشادية داخل النموذج.</p></div></div><div class="field-grid">
+            <label class="field"><span>حقل الاسم</span><input class="text-input" data-field="sections.booking.formLabels.name"></label><label class="field"><span>حقل الهاتف</span><input class="text-input" data-field="sections.booking.formLabels.phone"></label>
+            <label class="field"><span>حقل الخدمة</span><input class="text-input" data-field="sections.booking.formLabels.service"></label><label class="field"><span>حقل التاريخ</span><input class="text-input" data-field="sections.booking.formLabels.date"></label>
+            <label class="field"><span>حقل الوقت</span><input class="text-input" data-field="sections.booking.formLabels.time"></label><label class="field"><span>حقل الملاحظات</span><input class="text-input" data-field="sections.booking.formLabels.notes"></label>
+            <label class="field"><span>نص إرشادي للاسم</span><input class="text-input" data-field="sections.booking.formPlaceholders.name"></label><label class="field"><span>نص إرشادي للهاتف</span><input class="text-input" data-field="sections.booking.formPlaceholders.phone"></label>
+            <label class="field field-wide"><span>نص إرشادي للملاحظات</span><input class="text-input" data-field="sections.booking.formPlaceholders.notes"></label>
+            <label class="field"><span>خيار الخدمة الافتراضي</span><input class="text-input" data-field="sections.booking.servicePlaceholder"></label><label class="field"><span>خيار الاستشارة</span><input class="text-input" data-field="sections.booking.consultationOption"></label>
+            <label class="field field-wide"><span>خيار خدمة أخرى</span><input class="text-input" data-field="sections.booking.otherOption"></label>
+          </div></section>
+          <section class="editor-section"><div class="section-heading"><div><h3>التواصل والتذييل</h3><p>عناوين الأقسام ورسالة جزء التطبيق أسفل الصفحة.</p></div></div><div class="field-grid">
+            <label class="field"><span>شارة التواصل</span><input class="text-input" data-field="sections.contact.eyebrow"></label><label class="field"><span>عنوان التواصل</span><input class="text-input" data-field="sections.contact.titleLead"></label>
+            <label class="field"><span>الكلمة المميزة</span><input class="text-input" data-field="sections.contact.titleAccent"></label><label class="field field-wide"><span>وصف التواصل</span><textarea class="text-input" data-field="sections.contact.description" rows="2"></textarea></label>
+            <label class="field"><span>عنوان بطاقة الموقع</span><input class="text-input" data-field="sections.contact.cardLabels.address"></label><label class="field"><span>عنوان بطاقة الهاتف</span><input class="text-input" data-field="sections.contact.cardLabels.phone"></label>
+            <label class="field"><span>عنوان بطاقة الدوام</span><input class="text-input" data-field="sections.contact.cardLabels.hours"></label><label class="field"><span>عنوان بطاقة البريد</span><input class="text-input" data-field="sections.contact.cardLabels.email"></label>
+            <label class="field field-wide"><span>نص زر واتساب</span><input class="text-input" data-field="sections.contact.whatsappLabel"></label>
+            <label class="field"><span>عنوان التطبيقات</span><input class="text-input" data-field="sections.footerAppTitle"></label><label class="field"><span>وصف التطبيقات</span><input class="text-input" data-field="sections.footerAppDescription"></label>
+            <label class="field"><span>عنوان روابط التذييل</span><input class="text-input" data-field="sections.footerQuickTitle"></label><label class="field"><span>عنوان خدمات التذييل</span><input class="text-input" data-field="sections.footerServicesTitle"></label>
+            <label class="field field-wide"><span>عبارة حقوق النشر</span><input class="text-input" data-field="sections.copyrightNote"></label>
+          </div></section>
+        </section>
+
+        <section class="panel" id="panel-services" data-title="الخدمات">
+          <div class="panel-intro"><p class="kicker">قائمة العيادة</p><h2>الخدمات</h2><p class="muted">أضف الخدمات أو حدّث تفاصيلها وأسعارها. ستظهر في الموقع ونموذج الحجز.</p></div>
+          <div class="collection-toolbar"><span id="serviceListCount">0 خدمة</span><button class="secondary-button" id="addService" type="button"><span aria-hidden="true">＋</span> إضافة خدمة</button></div>
+          <div class="collection-list" id="serviceList"></div>
+        </section>
+
+        <section class="panel" id="panel-gallery" data-title="معرض الصور">
+          <div class="panel-intro"><p class="kicker">مكتبة الوسائط</p><h2>معرض الأعمال</h2><p class="muted">ارفع الصور والفيديوهات من جهازك أو اختر رابط ملف. الحجم الأقصى 35 ميغابايت.</p></div>
+          <section class="editor-section"><div class="field-grid">
+            <label class="field"><span>الشارة</span><input class="text-input" data-field="gallery.eyebrow" maxlength="100"></label>
+            <label class="field"><span>عنوان القسم</span><input class="text-input" data-field="gallery.titleLead" maxlength="100"></label>
+            <label class="field"><span>الكلمة المميزة</span><input class="text-input" data-field="gallery.titleAccent" maxlength="100"></label>
+            <label class="field field-wide"><span>وصف القسم</span><textarea class="text-input" data-field="gallery.description" rows="2" maxlength="1000"></textarea></label>
+          </div></section>
+          <div class="collection-toolbar"><span id="galleryListCount">0 ملف</span><div class="toolbar-actions"><button class="secondary-button" id="addGalleryItem" type="button"><span aria-hidden="true">＋</span> إضافة وسائط</button><button class="primary-button" id="saveGalleryButton" type="button"><span aria-hidden="true">↗</span> حفظ المعرض</button></div></div>
+          <div class="collection-list" id="galleryList"></div>
+        </section>
+
+        <section class="panel" id="panel-contact" data-title="التواصل والتذييل">
+          <div class="panel-intro"><p class="kicker">تفاصيل العيادة</p><h2>التواصل والتذييل</h2><p class="muted">حدّث معلومات التواصل وروابط الشبكات الاجتماعية.</p></div>
+          <section class="editor-section"><div class="field-grid">
+            <label class="field"><span>العنوان</span><textarea class="text-input" data-field="contact.address" rows="3"></textarea></label>
+            <label class="field"><span>أرقام الهاتف</span><textarea class="text-input" data-field="contact.phone" rows="3"></textarea></label>
+            <label class="field"><span>ساعات العمل</span><textarea class="text-input" data-field="contact.hours" rows="3"></textarea></label>
+            <label class="field"><span>البريد الإلكتروني</span><textarea class="text-input" data-field="contact.email" rows="3"></textarea></label>
+            <label class="field field-wide"><span>نبذة التذييل</span><textarea class="text-input" data-field="contact.footerDescription" rows="3" maxlength="500"></textarea></label>
+          </div></section>
+          <section class="editor-section"><div class="section-heading"><div><h3>روابط التواصل الاجتماعي</h3><p>اترك الحقل فارغاً لإخفاء الأيقونة من الموقع.</p></div></div><div class="field-grid">
+            <label class="field"><span>فيسبوك</span><input class="text-input" data-field="contact.social.facebook" dir="ltr" type="text"></label>
+            <label class="field"><span>إنستغرام</span><input class="text-input" data-field="contact.social.instagram" dir="ltr" type="text"></label>
+            <label class="field"><span>تيك توك</span><input class="text-input" data-field="contact.social.tiktok" dir="ltr" type="text"></label>
+            <label class="field"><span>سناب شات</span><input class="text-input" data-field="contact.social.snapchat" dir="ltr" type="text"></label>
+          </div></section>
+        </section>
+
+        <div class="publish-bar"><span id="publishMessage" role="status">التغييرات المحفوظة تظهر في هذا المتصفح فقط.</span><button class="primary-button" id="publishButton" type="submit">حفظ التغييرات محلياً <span aria-hidden="true">↗</span></button></div>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/local-content.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

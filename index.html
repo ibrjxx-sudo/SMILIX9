@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="عيادة SMILIX لطب الأسنان - احجز موعدك الآن مع أفضل أطباء الأسنان في عيادة فاخرة ومتطورة">
+    <meta name="theme-color" content="#0ea5e9">
+    <title>SMILIX | عيادة طب الأسنان الفاخرة - احجز موعدك الآن</title>
+    <script>
+        (function () {
+            var assetBase = './';
+            if (window.location.protocol !== 'file:') {
+                var pathParts = window.location.pathname.split('/').filter(Boolean);
+                if (/\.github\.io$/i.test(window.location.hostname) && pathParts.length) {
+                    assetBase = '/' + pathParts[0] + '/';
+                } else if (window.location.pathname.endsWith('/')) {
+                    assetBase = window.location.pathname;
+                } else {
+                    assetBase = window.location.pathname.slice(0, window.location.pathname.lastIndexOf('/') + 1) || '/';
+                }
+            }
+            document.write('<base href="' + assetBase.replace(/"/g, '') + '">');
+        })();
+    </script>
+    <link id="siteFavicon" rel="icon" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="animated-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+        <div class="particle-layer">
+            <div class="particle" style="--x:10%;--y:20%;--d:1;"></div>
+            <div class="particle" style="--x:25%;--y:70%;--d:2;"></div>
+            <div class="particle" style="--x:40%;--y:30%;--d:3;"></div>
+            <div class="particle" style="--x:55%;--y:85%;--d:1.5;"></div>
+            <div class="particle" style="--x:70%;--y:15%;--d:2.5;"></div>
+            <div class="particle" style="--x:85%;--y:60%;--d:1.8;"></div>
+            <div class="particle" style="--x:15%;--y:50%;--d:3.2;"></div>
+            <div class="particle" style="--x:92%;--y:40%;--d:2.8;"></div>
+        </div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <header class="header sticky" id="header">
+        <div class="container header-inner">
+            <a href="#home" class="logo">
+                <span class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                    </svg>
+                </span>
+                <span class="logo-text">SMILIX</span>
+            </a>
+
+            <nav class="nav-desktop" id="navDesktop">
+                <a href="#home" class="nav-link active">الرئيسية</a>
+                <a href="#services" class="nav-link">الخدمات</a>
+                <a href="#gallery" class="nav-link">المعرض</a>
+                <a href="#booking" class="nav-link">حجز موعد</a>
+                <a href="#contact" class="nav-link">تواصل</a>
+            </nav>
+
+            <div class="notification-wrap">
+                <button class="notification-bell" id="notificationBell" type="button" aria-label="الإشعارات" aria-expanded="false" aria-controls="notificationPanel">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>
+                    <span class="notification-count" id="notificationCount" hidden>0</span>
+                </button>
+                <section class="notification-panel" id="notificationPanel" aria-label="مركز الإشعارات" hidden>
+                    <div class="notification-panel-head">
+                        <h2>الإشعارات</h2>
+                        <button class="notification-read-all" id="notificationReadAll" type="button">تحديد الكل كمقروء</button>
+                    </div>
+                    <div class="notification-list" id="notificationList"></div>
+                    <div class="notification-panel-foot">
+                        <p id="notificationPermissionText">فعّل إشعارات المتصفح لتصلك التنبيهات خارج الصفحة.</p>
+                        <button class="notification-enable" id="notificationEnable" type="button">تفعيل إشعارات المتصفح</button>
+                    </div>
+                </section>
+            </div>
+
+            <a href="#booking" class="btn btn-primary btn-cta">
+                احجز الآن
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <div class="nav-mobile" id="navMobile">
+            <div class="nav-mobile-inner">
+                <a href="#home" class="nav-link active">الرئيسية</a>
+                <a href="#services" class="nav-link">الخدمات</a>
+                <a href="#gallery" class="nav-link">المعرض</a>
+                <a href="#booking" class="nav-link">حجز موعد</a>
+                <a href="#contact" class="nav-link">تواصل</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-inner">
+                <div class="hero-content reveal">
+                    <div class="badge-hero">
+                        <span class="badge-dot"></span>
+                        عيادة الأسنان الفاخرة في عمان
+                    </div>
+                    <h1 class="hero-title">
+                        ابتسامة ناصعة
+                        <span class="gradient-text">تبدو مثالية</span>
+                        <br>مع <span class="brand-name">SMILIX</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        نقدم لكم أعلى معايير طب الأسنان الحديث في بيئة فاخرة ومريحة، مع فريق طبي من المتخصصين الأوائل في المنطقة.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#booking" class="btn btn-primary btn-lg">
+                            احجز موعدك الآن
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost btn-lg">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            اتصل بنا
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-num">+15</div>
+                            <div class="stat-label">سنة خبرة</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <div class="stat-num">+5000</div>
+                            <div class="stat-label">مريض سعيد</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <div class="stat-num">+10</div>
+                            <div class="stat-label">أطباء متخصصون</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual reveal delay-200">
+                    <div class="hero-image-wrap">
+                        <div class="glow-ring"></div>
+                        <div class="hero-image">
+                            <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="عيادة SMILIX">
+                        </div>
+                        <div class="floating-card card-1">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+                            </div>
+                            <div>
+                                <div class="card-title">مواعيد سريعة</div>
+                                <div class="card-text">في خلال 24 ساعة</div>
+                            </div>
+                        </div>
+                        <div class="floating-card card-2">
+                            <div class="card-icon gold">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div>
+                                <div class="card-title">جودة فاخرة</div>
+                                <div class="card-text">معايير عالمية</div>
+                            </div>
+                        </div>
+                        <div class="floating-card card-3">
+                            <div class="card-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </div>
+                            <div>
+                                <div class="card-title">راحة مريضة</div>
+                                <div class="card-text">بدون ألم 100%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll">
+                <span>مرر للأسفل</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">خدماتنا المميزة</span>
+                    <h2 class="section-title">رعاية شاملة لكل <span class="gradient-text">ابتسامتك</span></h2>
+                    <p class="section-desc">نقدم مجموعة متكاملة من خدمات طب الأسنان باستخدام أحدث التقنيات العالمية في عيادة SMILIX الفاخرة.</p>
+                </div>
+
+                <div class="services-grid">
+                    <article class="service-card reveal">
+                        <div class="service-icon gradient-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                        </div>
+                        <h3>تبييض الأسنان</h3>
+                        <p>احصل على ابتسامة ناصعة بيضاء بأحدث تقنيات التبييض الآمنة والفعالة في جلسة واحدة.</p>
+                        <div class="service-price">
+                            <span>بدءاً من</span>
+                            <strong>250 دينار</strong>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal delay-100">
+                        <div class="service-icon gradient-icon-2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        </div>
+                        <h3>زراعة الأسنان</h3>
+                        <p>زراعات أسنان فورية من أجود الأنواع العالمية مع ضمان مدى الحياة ونتائج طبيعية تماماً.</p>
+                        <div class="service-price">
+                            <span>بدءاً من</span>
+                            <strong>650 دينار</strong>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal delay-200">
+                        <div class="service-icon gradient-icon-3">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <h3>الفينير والقشور الخزفية</h3>
+                        <p>قشور خزفية فاخرة تعيد تشكيل وبياض الأسنان للحصول على ابتسامة هوليوود المثالية.</p>
+                        <div class="service-price">
+                            <span>بدءاً من</span>
+                            <strong>350 دينار</strong>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal">
+                        <div class="service-icon gradient-icon-4">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <h3>تقويم الأسنان</h3>
+                        <p>تقويم شفاف invisible وتقويد تقليدي بمحاذاة مثالية وإبتسامات متناسقة باحترافية عالية.</p>
+                        <div class="service-price">
+                            <span>بدءاً من</span>
+                            <strong>850 دينار</strong>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal delay-100">
+                        <div class="service-icon gradient-icon-5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <h3>علاج العصب والحشوات</h3>
+                        <p>حشوات تجميلية متطابقة للون الأسنان وعلاج عصب دقيق بأحدث الأجهزة بدون أي ألم.</p>
+                        <div class="service-price">
+                            <span>بدءاً من</span>
+                            <strong>80 دينار</strong>
+                        </div>
+                    </article>
+
+                    <article class="service-card reveal delay-200">
+                        <div class="service-icon gradient-icon-6">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h3>جراحة الفم والأسنان</h3>
+                        <p>عمليات جراحية دقيقة لقلع الأسنان العاقل والعمليات التجميلية للثة والفكين باحترافية.</p>
+                        <div class="service-price">
+                            <span>بدءاً من</span>
+                            <strong>150 دينار</strong>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery" id="gallery">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">معرض أعمالنا</span>
+                    <h2 class="section-title">تحولات <span class="gradient-text">ابتسامات</span> ناجحة</h2>
+                    <p class="section-desc">نقدم لكم نماذج من عمليات التجميل الناجحة التي أثبتت جودة خدماتنا في SMILIX.</p>
+                </div>
+
+                <div class="gallery-grid"></div>
+            </div>
+        </section>
+
+        <section class="booking" id="booking">
+            <div class="container">
+                <div class="booking-wrap">
+                    <div class="booking-info reveal">
+                        <span class="eyebrow dark">احجز موعدك الآن</span>
+                        <h2 class="section-title light">ثمّة ابتسامة مثالية <span class="gradient-text">تنتظرك</span></h2>
+                        <p class="booking-desc">املأ النموذج التالي لاختيار التاريخ والوقت المناسب، وسوف نتواصل معك فوراً لتأكيد حجزك.</p>
+
+                        <div class="booking-features">
+                            <div class="bf-item">
+                                <div class="bf-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                </div>
+                                <div>
+                                    <h4>حجز فوري معتمد</h4>
+                                    <p>تأكيد الحجز مباشرة عبر واتساب في ثوانٍ</p>
+                                </div>
+                            </div>
+                            <div class="bf-item">
+                                <div class="bf-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                </div>
+                                <div>
+                                    <h4>مواعيد مرنة</h4>
+                                    <p>متاحون طوال أيام الأسبوع من 9 صباحاً - 9 مساءً</p>
+                                </div>
+                            </div>
+                            <div class="bf-item">
+                                <div class="bf-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                </div>
+                                <div>
+                                    <h4>استشارة مجانية</h4>
+                                    <p>فحص عام وتقييم أولي مجاني عند أول زيارة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-form-wrap reveal delay-200">
+                        <form class="booking-form" id="bookingForm" autocomplete="off">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>الاسم الكامل *</label>
+                                    <input type="text" id="patientName" placeholder="اكتب اسمك الكامل" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>رقم الهاتف *</label>
+                                    <input type="tel" id="patientPhone" placeholder="مثال: 0791234567" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>نوع الخدمة المطلوبة *</label>
+                                <select id="serviceSelect" required>
+                                    <option value="">اختر نوع الخدمة</option>
+                                    <option value="فحص عام واستشارة">فحص عام واستشارة مجانية</option>
+                                    <option value="تبييض الأسنان">تبييض الأسنان</option>
+                                    <option value="زراعة الأسنان">زراعة الأسنان</option>
+                                    <option value="الفينير والقشور الخزفية">الفينير والقشور الخزفية</option>
+                                    <option value="تقويم الأسنان">تقويم الأسنان</option>
+                                    <option value="حشوات وعصب">حشوات وعلاج العصب</option>
+                                    <option value="جراحة وقلع">جراحة وقلع أسنان</option>
+                                    <option value="خدمة أخرى">خدمة أخرى</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>اختر التاريخ *</label>
+                                <div class="date-scroller" id="dateScroller">
+                                    <div class="loading-dates">جاري تحميل المواعيد...</div>
+                                </div>
+                                <input type="hidden" id="selectedDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>اختر الوقت *</label>
+                                <div class="time-slots" id="timeSlots">
+                                    <div class="empty-times">الرجاء اختيار التاريخ أولاً</div>
+                                </div>
+                                <input type="hidden" id="selectedTime" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>ملاحظات إضافية (اختياري)</label>
+                                <textarea id="patientNotes" rows="2" placeholder="أي تفاصيل تود إضافتها..."></textarea>
+                            </div>
+
+                            <div class="form-alert" id="formAlert"></div>
+
+                            <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">
+                                <span class="btn-text">
+                                    تأكيد الحجز عبر واتساب
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                </span>
+                                <span class="btn-loader"></span>
+                            </button>
+
+                            <p class="form-note">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                عند الضغط على زر تأكيد الحجز، سيتم فتح واتساب مع تفاصيل حجزك تلقائياً
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">تواصل معنا</span>
+                    <h2 class="section-title">نحن هنا لخدمتك <span class="gradient-text">دائماً</span></h2>
+                    <p class="section-desc">تواصل معنا عبر أي من القنوات التالية أو زر عيادة SMILIX في أي وقت.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-card reveal">
+                        <div class="contact-icon gradient-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <h4>العنوان</h4>
+                        <p>عمّان - الجبيهة<br>شارع الملكة رانيا، مبنى SMILIX الطبي، الدور الأول</p>
+                    </div>
+                    <div class="contact-card reveal delay-100">
+                        <div class="contact-icon gradient-icon-2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <h4>الهاتف</h4>
+                        <p dir="ltr">078 257 8156<br>06 555 1234</p>
+                    </div>
+                    <div class="contact-card reveal delay-200">
+                        <div class="contact-icon gradient-icon-3">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <h4>ساعات العمل</h4>
+                        <p>السبت - الخميس<br>9:00 صباحاً - 9:00 مساءً</p>
+                    </div>
+                    <div class="contact-card reveal delay-300">
+                        <div class="contact-icon gradient-icon-4">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <h4>البريد الإلكتروني</h4>
+                        <p dir="ltr">info@smilix.jo<br>booking@smilix.jo</p>
+                    </div>
+                </div>
+
+                <div class="contact-whatsapp reveal">
+                    <a href="https://wa.me/962782578156" target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        تواصل مباشر عبر واتساب
+                        <span dir="ltr">00962 78 257 8156</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="#home" class="logo footer-logo">
+                    <span class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                    </span>
+                    <span class="logo-text">SMILIX</span>
+                </a>
+                <p>عيادة طب الأسنان الفاخرة في عمان. نقدم أعلى معايير الرعاية الطبية بلمسة فنية وابتسامة دائمة.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="فيسبوك">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="#" aria-label="انستغرام">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="#" aria-label="توك توك">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
+                    </a>
+                    <a href="#" aria-label="سناب شات">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.002 0c-1.163 0-2.25.308-3.188.841a5.91 5.91 0 00-2.189 2.19A6.1 6.1 0 005.87 5.22a23.78 23.78 0 00-.949 4.95c-.102 1.24-.2 2.281-.29 3.152-.068.62-.124 1.11-.174 1.46-.057.371-.109.614-.113.858a.874.874 0 01-.406.787c-.39.25-.876.37-1.404.424-.064.006-.128.017-.2.031a.433.433 0 00-.275.598c.443 1.252 1.14 2.011 2.176 2.322 1.086.324 1.965.19 2.808-.285 0 0 .06-.034.175-.09.183-.089.392-.182.602-.251.403-.134.772-.209 1.101-.188 1.328.086 2.098 1.227 3.146 1.227.991 0 1.805-.85 2.517-1.264.308-.18.782-.44 1.311-.666.317-.135.636-.252.904-.314.248-.058.484.022.785.172.088.045.146.076.146.076.873.504 1.987.657 2.967.32.962-.33 1.634-1.11 2.146-2.577a.434.434 0 00-.273-.596 11.3 11.3 0 01-.2-.034c-.519-.057-.99-.184-1.38-.423a.873.873 0 01-.403-.789c-.004-.24-.055-.481-.112-.852-.049-.35-.106-.837-.173-1.454-.092-.865-.187-1.906-.287-3.14a22.9 22.9 0 00-.947-4.966 6.06 6.06 0 00-.947-2.19 5.9 5.9 0 00-2.186-2.188A5.55 5.55 0 0012.002 0zm2.646 5.996c.157.017.301.077.42.161a1.239 1.239 0 01-.002 1.952 1.27 1.27 0 01-.93.307 1.27 1.27 0 01-.835-.303 1.242 1.242 0 01.005-1.952 1.27 1.27 0 011.342-.165zm-5.34.002a1.27 1.27 0 01.907.303 1.244 1.244 0 01-.003 1.952 1.272 1.272 0 01-1.77.002 1.242 1.242 0 01.002-1.952 1.27 1.27 0 01.864-.305z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h5>روابط سريعة</h5>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#gallery">معرض الأعمال</a></li>
+                    <li><a href="#booking">احجز موعد</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h5>خدماتنا</h5>
+                <ul>
+                    <li><a href="#services">تبييض الأسنان</a></li>
+                    <li><a href="#services">زراعة الأسنان</a></li>
+                    <li><a href="#services">الفينير الخزفي</a></li>
+                    <li><a href="#services">تقويم الأسنان</a></li>
+                    <li><a href="#services">جراحة الفم</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-app">
+                <h5>حمّل تطبيقنا</h5>
+                <p>قريباً على متاجر التطبيقات</p>
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                        <div>
+                            <small>متوفر على</small>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+                    <a href="#" class="app-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
+                        <div>
+                            <small>متوفر على</small>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2026 عيادة SMILIX لطب الأسنان. جميع الحقوق محفوظة.</p>
+                <p dir="ltr">Made with <svg width="14" height="14" viewBox="0 0 24 24" fill="#ef4444" style="vertical-align:middle"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> in Amman, Jordan</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/962782578156" target="_blank" rel="noopener" class="wa-float" aria-label="واتساب">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <button class="scroll-top" id="scrollTop" aria-label="الأعلى">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
